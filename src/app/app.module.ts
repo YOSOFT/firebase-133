@@ -6,7 +6,18 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyBliAOXmsclquzEbhtP0ZdvxDRMz5L8-EQ",
+    authDomain: "ejemplo-firebase-54192.firebaseapp.com",
+    databaseURL: "https://ejemplo-firebase-54192.firebaseio.com",
+    projectId: "ejemplo-firebase-54192",
+    storageBucket: "ejemplo-firebase-54192.appspot.com",
+    messagingSenderId: "653305824534"
+};
 @NgModule({
   declarations: [
     MyApp,
@@ -14,7 +25,10 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,6 +38,7 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
